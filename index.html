@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/style.css">
+    <script defer src="./Scripts/script.js" type="text/javascript"></script>
+    <title>Physics Escape Room</title>
+</head>
+<body>
+    <nav id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="./Pages/history.html">Physics History</a>
+            <a href="./Pages/gravity.html">Newton's Apple</a>
+            <a href="./Pages/resonance.html">Resonant Frequency</a>
+            <a href="./Pages/quiz.html">Physics Quiz</a>
+        </div>
+    </nav>
+
+    <div id="main-page">
+
+        <div class="button-container" id="next-button-container">
+            <button type="button" id="next">&#10095;</button>
+        </div>
+        <div class="button-container" id="prev-button-container">
+            <button type="button" id="prev">&#10094;</button>
+        </div>
+        <div id="dots-container">
+            <span class="dot" id="slide1"></span>
+            <span class="dot" id="slide2"></span>
+            <span class="dot" id="slide3"></span>
+            <span class="dot" id="slide4"></span>
+        </div>
+
+        <header class="header"> <!--<div>class test-header-->
+            <div class="nav-box" id="nav-box-left">
+                <a href="./Pages/history.html" class="highlight-text">History</a>
+                <a href="./Pages/gravity.html" class="highlight-text">Gravity</a>
+            </div>
+
+            <div class="headline" id="main-page-headline"> <!--<header>class header id main-page-header-->
+                <div>
+                    <div class="headline-highlight">PhysiXplore</div>
+                </div>    
+            </div>
+
+            <div class="nav-box" id="nav-box-right">
+                <a href="./Pages/resonance.html" class="highlight-text">Resonance</a>
+                <a href="./Pages/quiz.html" class="highlight-text">Quiz</a>
+            </div>
+        </header>
+
+        <div class="burger-button-container">
+            <button class="burger-button" type="button">&#9776;</button>
+        </div>
+
+        <section id="slideshow-container">
+            <div class="mySlides fade">
+                <div class="slide-container" id="history-page-link">
+                    <a href="./Pages/history.html" class="page-link" id="test">Read about key<br>
+                            Physical Events
+                    </a>
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="slide-container" id="gravity-page-link">
+                    <a href="./Pages/gravity.html" class="page-link">Newton's<br>
+                        Gravitational Law
+                    </a>
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="slide-container" id="resonance-page-link">
+                    <a href="./Pages/resonance.html" class="page-link">Shattering glass<br>
+                        with sound
+                    </a>
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="slide-container" id="quiz-page-link">
+                    <a href="./Pages/quiz.html" class="page-link">Test Your<br>
+                        Knowledge
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>   
+</body>
+</html>
