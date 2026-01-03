@@ -358,7 +358,7 @@
 #history-page-main {
 	display: grid;
 	grid-template-columns: 1fr 11fr;
-	grid-template-rows: repeat(9, 1.5fr 0.5fr 1fr);
+	grid-template-rows: repeat(9, 1fr 0.5fr 1fr);
 	background-color: rgb(150, 150, 150);
   	background-image: url(../Images/astronomy-5829414_1920.png);
 	background-size: cover;
@@ -378,14 +378,14 @@
 	width: 3px;
 }
 
-.ruler-dots {
+.ruler-dot {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 1;
 }
 
-.ruler-dots > div {
+.ruler-dot > div {
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
@@ -402,27 +402,39 @@
 	display: none;
 }
 
-#date-wrapper {
+#timeline-item-wrapper {
 	display: contents;
 }
 
-.dates {
+.timeline-item {
 	display: flex;
-	justify-content: start;
-	align-items: center;
-	padding-left: 8px;	
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 	font-family: 'Inter', sans-serif;
-	font-size: 1rem;
+	font-size: 1.25rem;
+	font-weight: normal;
+	padding-left: 8px;	
 }
 
-.media-container {
+.timeline-date {
+	font-weight: 800;
+}
+
+.timeline-date-title {
+	background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 128, 0));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.timeline-desc {
 	display: flex;
 	align-items: center;
 	font-size: 1.25rem;
 	padding: 8px;
-		background: rgba(0, 0, 0, 0.623);    
-		box-shadow: 0 0 1rem 0.25rem black;
-		border-radius: 8px; 
+	background: rgba(0, 0, 0, 0.623);    
+	box-shadow: 0 0 1rem 0.25rem black;
+	border-radius: 8px; 
 }
 
 /* #text-background1 {grid-area: 2/2/4/3;}
@@ -434,39 +446,39 @@
 #text-background7 {grid-area: 20/2/22/3;}
 #text-background8 {grid-area: 23/2/25/3;} */
 
-#dot1 {grid-area: 2/1/3/2;}
-#date-1922 {grid-area: 2/2/3/3;}
-#content-1922 {grid-area: 3/2/4/3;}
+#ruler-dot-1 {grid-area: 2/1/3/2;}
+#timeline-item-1 {grid-area: 2/2/3/3;}
+#timeline-desc-1 {grid-area: 3/2/4/3;}
 
-#dot2 {grid-area: 5/1/6/2;}
-#date-1952 {grid-area: 5/2/6/3;}
-#content-1952 {grid-area: 6/2/7/3;}
+#ruler-dot-2 {grid-area: 5/1/6/2;}
+#timeline-item-2 {grid-area: 5/2/6/3;}
+#timeline-desc-2 {grid-area: 6/2/7/3;}
 
-#dot3 {grid-area: 8/1/9/2;}
-#date-1956 {grid-area: 8/2/9/3;}
-#content-1956 {grid-area: 9/2/10/3;}
+#ruler-dot-3 {grid-area: 8/1/9/2;}
+#timeline-item-3 {grid-area: 8/2/9/3;}
+#timeline-desc-3 {grid-area: 9/2/10/3;}
 
-#dot4 {grid-area: 11/1/12/2;}
-#date-1964 {grid-area: 11/2/12/3;}
-#content-1964 {grid-area: 12/2/13/2;}
+#ruler-dot-4 {grid-area: 11/1/12/2;}
+#timeline-item-4 {grid-area: 11/2/12/3;}
+#timeline-desc-4 {grid-area: 12/2/13/2;}
 
-#dot5 {grid-area: 14/1/15/2;}
-#date-1971 {grid-area: 14/2/15/3;}
-#content-1971 {grid-area: 15/2/16/3;}
+#ruler-dot-5 {grid-area: 14/1/15/2;}
+#timeline-item-5 {grid-area: 14/2/15/3;}
+#timeline-desc-5 {grid-area: 15/2/16/3;}
 
-#dot6 {grid-area: 17/1/18/2;}
-#date-1980 {grid-area: 17/2/18/3;}
-#content-1980 {grid-area: 18/2/19/3;}
+#ruler-dot-6 {grid-area: 17/1/18/2;}
+#timeline-item-6 {grid-area: 17/2/18/3;}
+#timeline-desc-6 {grid-area: 18/2/19/3;}
 
-#dot7 {grid-area: 20/1/21/2;}
-#date-1991 {grid-area: 20/2/21/3;}
-#content-1991 {grid-area: 21/2/22/3;}
+#ruler-dot-7 {grid-area: 20/1/21/2;}
+#timeline-item-7 {grid-area: 20/2/21/3;}
+#timeline-desc-7 {grid-area: 21/2/22/3;}
 
-#dot8 {grid-area: 23/1/24/2;}
-#date-1994 {grid-area: 23/2/24/3;}
-#content-1994 {grid-area: 24/2/25/3;}
+#ruler-dot-8 {grid-area: 23/1/24/2;}
+#timeline-item-8 {grid-area: 23/2/24/3;}
+#timeline-desc-8 {grid-area: 24/2/25/3;}
 
-#content-end {
+#timeline-desc-9 {
 	grid-area: 26/2/27/3;
 	text-shadow: 0 0 1rem black;
 }
@@ -474,17 +486,17 @@
 @media screen and (min-width: 601px) {
 
 	#history-page-main {
-		grid-template-columns: 1fr 2fr 8fr;
-		grid-template-rows: repeat(9, 4fr 2fr) 1.5fr;
+		grid-template-columns: 1fr 3fr 8fr;
+		grid-template-rows: repeat(9, 2.5fr 2fr) 1.5fr;
 	}
 
 	#ruler {
 		grid-area: 1/1/end/2;
 	}
 
-	.dates {font-size: 1.25rem;}
+	.timeline-item {font-size: 1.25rem;}
 
-	.media-container {font-size: 1.5rem;}
+	.timeline-desc {font-size: 1.5rem;}
 
 	/* #text-background1 {grid-area: 2/2/3/4;}
 	#text-background2 {grid-area: 4/2/5/4;}
@@ -495,111 +507,108 @@
 	#text-background7 {grid-area: 14/2/15/4;}
 	#text-background8 {grid-area: 16/2/17/4;} */
 
-	#dot1 {grid-area: 2/1/3/2;}
-	#date-1922 {grid-area: 2/2/3/3;}
-	#content-1922 {grid-area: 2/3/3/4;}	
+	#ruler-dot-1 {grid-area: 2/1/3/2;}
+	#timeline-item-1 {grid-area: 2/2/3/3;}
+	#timeline-desc-1 {grid-area: 2/3/3/4;}	
 
-	#dot2 {grid-area: 4/1/5/2;}
-	#date-1952 {grid-area: 4/2/5/3;}
-	#content-1952 {grid-area: 4/3/5/4;}
+	#ruler-dot-2 {grid-area: 4/1/5/2;}
+	#timeline-item-2 {grid-area: 4/2/5/3;}
+	#timeline-desc-2 {grid-area: 4/3/5/4;}
 
-	#dot3 {grid-area: 6/1/7/2;}
-	#date-1956 {grid-area: 6/2/7/3;}
-	#content-1956 {grid-area: 6/3/7/4;}
+	#ruler-dot-3 {grid-area: 6/1/7/2;}
+	#timeline-item-3 {grid-area: 6/2/7/3;}
+	#timeline-desc-3 {grid-area: 6/3/7/4;}
 
-	#dot4 {grid-area: 8/1/9/2;}
-	#date-1964 {grid-area: 8/2/9/3;}
-	#content-1964 {grid-area: 8/3/9/4;}
+	#ruler-dot-4 {grid-area: 8/1/9/2;}
+	#timeline-item-4 {grid-area: 8/2/9/3;}
+	#timeline-desc-4 {grid-area: 8/3/9/4;}
 
-	#dot5 {grid-area: 10/1/11/2;}
-	#date-1971 {grid-area: 10/2/11/3;}
-	#content-1971 {grid-area: 10/3/11/4;}
+	#ruler-dot-5 {grid-area: 10/1/11/2;}
+	#timeline-item-5 {grid-area: 10/2/11/3;}
+	#timeline-desc-5 {grid-area: 10/3/11/4;}
 
-	#dot6 {grid-area: 12/1/13/2;}
-	#date-1980 {grid-area: 12/2/13/3;}
-	#content-1980 {grid-area: 12/3/13/4;}
+	#ruler-dot-6 {grid-area: 12/1/13/2;}
+	#timeline-item-6 {grid-area: 12/2/13/3;}
+	#timeline-desc-6 {grid-area: 12/3/13/4;}
 
-	#dot7 {grid-area: 14/1/15/2;}
-	#date-1991 {grid-area: 14/2/15/3;}
-	#content-1991 {grid-area: 14/3/15/4;}
+	#ruler-dot-7 {grid-area: 14/1/15/2;}
+	#timeline-item-7 {grid-area: 14/2/15/3;}
+	#timeline-desc-7 {grid-area: 14/3/15/4;}
 
-	#dot8 {grid-area: 16/1/17/2;}
-	#date-1994 {grid-area: 16/2/17/3;}
-	#content-1994 {grid-area: 16/3/17/4;}
+	#ruler-dot-8 {grid-area: 16/1/17/2;}
+	#timeline-item-8 {grid-area: 16/2/17/3;}
+	#timeline-desc-8 {grid-area: 16/3/17/4;}
 
-	#content-end  {grid-area: 18/2/19/4;}
+	#timeline-desc-9  {grid-area: 18/2/19/4;}
 }
 
 @media screen and (min-width: 1000px) {
 	
   	#history-page-main {
 		grid-template-columns: 20fr 1fr 20fr;
-		grid-template-rows: repeat(9, 1fr 2fr) 1fr;
+		grid-template-rows: repeat(9, 2.5fr 2fr) 1fr;
 		padding: 0 16px;
 	}
 
-	#date-wrapper > *:nth-child(odd) {margin-left: auto;} 
-	#date-wrapper > *:nth-child(even) {margin-right: auto;}
+	#timeline-item-wrapper > *:nth-child(odd) {margin-left: auto;} 
+	#timeline-item-wrapper > *:nth-child(even) {margin-right: auto;}
 
 	#ruler {grid-area: 1/2/end/3;}
 
 	.text-background {display: none;}
 
-	.dates {
-		font-size: 1.5rem;
-		text-shadow: 0 0 1.25rem black;
-	}
+	.timeline-item {font-size: 1.5rem;}
 
-	.media-container {
+	.timeline-desc {
 		font-size: 1.5rem;
 		background: rgba(0, 0, 0, 0.623);    
 		box-shadow: 0 0 1rem 0.25rem black;
 		border-radius: 8px; 
 	}
 
-	#date-1922,
-	#date-1956,
-	#date-1971,
-	#date-1991 {text-align: right;}
+	#timeline-item-1,
+	#timeline-item-3,
+	#timeline-item-5,
+	#timeline-item-7 {align-items: flex-end;}
 
-	#content-1952,
-	#content-1964,
-	#content-1980,
-	#content-1994 {text-align: right;}
+	#timeline-desc-2,
+	#timeline-desc-4,
+	#timeline-desc-6,
+	#timeline-desc-8 {text-align: right;}
 
-	#date-1922 {grid-area: 2/1/3/2;}
-	#dot1 {grid-area: 2/2/3/3;}
-	#content-1922 {grid-area: 2/3/3/4;}
+	#timeline-item-1 {grid-area: 2/1/3/2;}
+	#ruler-dot-1 {grid-area: 2/2/3/3;}
+	#timeline-desc-1 {grid-area: 2/3/3/4;}
 
-	#date-1952 {grid-area: 4/3/5/4;}
-	#dot2 {grid-area: 4/2/5/3;}
-	#content-1952 {grid-area: 4/1/5/2;}
+	#timeline-item-2 {grid-area: 4/3/5/4;}
+	#ruler-dot-2 {grid-area: 4/2/5/3;}
+	#timeline-desc-2 {grid-area: 4/1/5/2;}
 
-	#date-1956 {grid-area: 6/1/7/2;}
-	#dot3 {grid-area: 6/2/7/3;}
-	#content-1956 {grid-area: 6/3/7/4;}
+	#timeline-item-3 {grid-area: 6/1/7/2;}
+	#ruler-dot-3 {grid-area: 6/2/7/3;}
+	#timeline-desc-3 {grid-area: 6/3/7/4;}
 
-	#date-1964 {grid-area: 8/3/9/4;}
-	#dot4 {grid-area: 8/2/9/3;}
-	#content-1964 {grid-area: 8/1/9/2;}
+	#timeline-item-4 {grid-area: 8/3/9/4;}
+	#ruler-dot-4 {grid-area: 8/2/9/3;}
+	#timeline-desc-4 {grid-area: 8/1/9/2;}
 
-	#date-1971 {grid-area: 10/1/11/2;}
-	#dot5 {grid-area: 10/2/11/3;}
-	#content-1971 {grid-area: 10/3/11/4;}
+	#timeline-item-5 {grid-area: 10/1/11/2;}
+	#ruler-dot-5 {grid-area: 10/2/11/3;}
+	#timeline-desc-5 {grid-area: 10/3/11/4;}
 
-	#date-1980 {grid-area: 12/3/13/4;}
-	#dot6 {grid-area: 12/2/13/3;}
-	#content-1980 {grid-area: 12/1/13/2;}
+	#timeline-item-6 {grid-area: 12/3/13/4;}
+	#ruler-dot-6 {grid-area: 12/2/13/3;}
+	#timeline-desc-6 {grid-area: 12/1/13/2;}
 
-	#date-1991 {grid-area: 14/1/15/2;}
-	#dot7 {grid-area: 14/2/15/3;}
-	#content-1991 {grid-area: 14/3/15/4;}
+	#timeline-item-7 {grid-area: 14/1/15/2;}
+	#ruler-dot-7 {grid-area: 14/2/15/3;}
+	#timeline-desc-7 {grid-area: 14/3/15/4;}
 	
-	#date-1994 {grid-area: 16/3/17/4;}
-	#dot8 {grid-area: 16/2/17/3;}
-	#content-1994 {grid-area: 16/1/17/2;}
+	#timeline-item-8 {grid-area: 16/3/17/4;}
+	#ruler-dot-8 {grid-area: 16/2/17/3;}
+	#timeline-desc-8 {grid-area: 16/1/17/2;}
 
-	#content-end  {grid-area: 18/3/19/4;}
+	#timeline-desc-9  {grid-area: 18/3/19/4;}
 }
 
 /* /HISTORY PAGE */
