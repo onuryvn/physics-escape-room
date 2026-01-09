@@ -1,17 +1,16 @@
 // curtain menu
-
 let burger_button = document.querySelector('.burger-button');
 
 let toggle = false;
 
 function changeButton() {
-  openNav();
+  slideDownNav();
   burger_button.innerHTML = '&times;';
   burger_button.style.fontSize = '36px';
 }
 
 function resetButton() {
-  closeNav();
+  slideUpNav();
   burger_button.innerHTML = '&#9776;';
   burger_button.style.fontSize = '24px';
 }
@@ -26,14 +25,12 @@ burger_button.addEventListener("click", () => {
   toggle = !toggle; // change value
 });
 
-/* Open */
-function openNav() {
-  document.getElementById("myNav").style.height = "100%";
+function slideDownNav() {
+  document.getElementById("nav-mobile").style.height = "100%";
 }
 
-/* Close */
-function closeNav() {
-  document.getElementById("myNav").style.height = "0%";
+function slideUpNav() {
+  document.getElementById("nav-mobile").style.height = "0%";
 }
 // /curtain menu
 
