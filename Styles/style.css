@@ -46,7 +46,7 @@
   font-size: 1.75rem;
   color: rgb(66, 71, 80);
   text-shadow: 0 0 1px black;
-  border-bottom: 1px solid oklch(39.673% 0.01661 262.331);
+  border-bottom: 1px solid rgb(66, 71, 80);
   padding: 0.4rem;
 }
 
@@ -218,7 +218,7 @@
 
 #gravity-page-link {background-image: url(../Images/1546636880.svg);}
 
-#resonance-page-link {background-image: url(../Images/horizontal_pendulum_2.svg);}
+#pendulum-page-link {background-image: url(../Images/horizontal_pendulum_2.svg);}
 
 #quiz-page-link {background-image: url(../Images/mathematics-7304235.svg);}
 
@@ -334,7 +334,7 @@
 
 .grid-item-main {
 	grid-area: 2/1/3/4;
-	padding: 0 0.5rem;
+	/* padding: 0 0.5rem; */
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -370,11 +370,11 @@
 	display: grid;
 	grid-template-columns: 1fr 11fr;
 	grid-template-rows: repeat(9, 1fr 0.5fr 1fr);
-	background-color: rgb(65, 65, 65);
+	background-color: rgb(65, 65, 65); /* zsmfassen */
   	background-image: url(../Images/astronomy-5829414_1920.png);
-	background-size: cover;
-	background-blend-mode: color-burn;
-	box-shadow: inset 0 0 12px 4px black;
+	background-size: cover; /* zsmfasse */
+	background-blend-mode: color-burn; /* zsmfassen */
+	box-shadow: inset 0 0 12px 4px black; /* zsmfassen */
 	padding-right: 16px;
 }
 
@@ -644,19 +644,189 @@
 /* /GRAVITY PAGE */
 
 
-/* RESONANCE PAGE */
-#resonance-page-main {
+/* PENDULUM PAGE */
+#pendulum-page-main {
 	grid-area: 2/1/3/4;
 	display: grid;
-	grid-template-columns: 1fr 5fr 1fr;
-	/* background-image: url(../Images/Gray_Matte.jpg); */
+	grid-template-columns: 1fr;
+	gap: 48px;
+	background-color: rgb(44, 44, 44);
+	background-image: url(../Images/horizontal_pendulum_2.svg);
+	background-blend-mode: color-burn;
 	background-position: center;
-  background-blend-mode: color;
-	background-attachment: fixed;
-  background-size: cover;
+  	background-size: cover;
+	box-shadow: inset 0 0 12px 4px black; /* zsmfassen */
+	padding: 16px;
 }
 
-/* /RESONANCE PAGE */
+.pendulum-text,
+#pendulum-wrapper,
+.pendulum-controls,
+.pendulum-control-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.pendulum-text,
+#pendulum-wrapper,
+.pendulum-controls,
+.pendulum-control-group {
+	gap: 16px;
+}
+
+.pendulum-text-title,
+.pendulum-controls,
+.pendulum-control-group {
+	font-family: 'Inter', sans-serif;
+	font-weight: 500;
+}
+
+.pendulum-text,
+.pendulum-control-label,
+.pendulum-control-button,
+.value-display {
+	font-size: 1.25rem;
+}
+
+#pendulum-text-1 {grid-area: 1/1/2/2;}
+
+#pendulum-text-2 {grid-area: 2/1/3/2;}
+
+#pendulum-text-3 {grid-area: 4/1/5/2;}
+
+#pendulum-wrapper {grid-area: 3/1/4/2;}
+
+#pendulum-container {
+	margin: 0 auto;
+	width: 200px;
+	border: 2px solid white;
+	border-radius: 50%;
+	box-shadow: 0 0 8px 4px black;
+}
+
+input[type="range"] {
+	height: 8px;
+	cursor: pointer;
+}
+
+.value-display {
+    text-align: center;
+}
+
+.pendulum-control-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+	border-radius: 8px;
+    cursor: pointer;
+    background: rgb(195, 195, 195);
+    color: rgb(66, 71, 80);
+    transition: background 0.3s;
+}
+
+.pendulum-control-button:hover {
+    background: white;
+}
+
+.pendulum-rod {
+    stroke: white;
+    stroke-width: 2;
+}
+
+.pendulum-weight {
+	fill: rgb(66, 71, 80);
+    stroke: white;
+    stroke-width: 2;
+}
+
+.pivot {
+    fill: white;
+}
+
+@media screen and (min-width: 700px) {
+	
+	#pendulum-page-main {
+		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: auto;
+		gap: 32px;
+	}
+
+	.pendulum-text {font-size: 1.5rem;}
+
+	#pendulum-text-1 {grid-area: 1/1/2/2;}
+	#pendulum-text-2 {grid-area: 1/2/2/3;}
+	#pendulum-text-3 {grid-area: 3/1/4/3;}
+
+	#pendulum-wrapper {display: contents;}
+
+	#pendulum-container {
+		grid-area: 2/1/3/2;
+		width: 300px;
+		height: 300px;
+		display: flex;
+		align-items: center;
+	}
+
+	#pendulum-test {
+		display: flex;
+		align-items: center;
+	}
+	.pendulum-controls {
+		grid-area: 2/2/3/3;
+		width: 90%;
+		margin: 0 auto;
+		justify-content: center;
+	}
+}
+
+@media  screen and (min-width: 1000px) {
+	
+	#pendulum-page-main {
+		grid-template-columns: 1fr 1fr 1fr;
+		padding: 16px 64px;
+	}
+
+	.pendulum-text {display: contents;}
+
+	.pendulum-text-title,
+	.pendulum-text-desc,
+	#pendulum-wrapper,
+	#pendulum-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	#pendulum-text-title-1 {grid-area: 1/1/2/2;}
+	#pendulum-text-desc-1 {grid-area: 1/2/2/4;}
+
+	#pendulum-text-title-2 {grid-area: 2/1/3/2;}
+	#pendulum-text-desc-2 {grid-area: 2/2/3/4;}
+
+	#pendulum-text-title-3 {grid-area: 4/1/5/2;}
+	#pendulum-text-desc-3 {grid-area: 4/2/5/4;}
+
+	#pendulum-wrapper {
+		grid-area: 3/1/4/4;
+		justify-content: center;
+		gap: 32px;
+	}
+
+	#pendulum-container {
+		width: 400px;
+		height: 400px;
+	}
+
+	.pendulum-controls {
+		justify-content: center;
+		width: 40%;
+		gap: 32px; 
+		margin: 0;
+	}
+
+}
+
+/* /PENDULUM PAGE */
 
 
 /* QUIZ PAGE */
@@ -669,7 +839,6 @@
 	background-size: cover;
 	background-attachment: fixed;
 }
-
 
 #quiz-page-main h1{
 	/* font-size: 1.5rem; */ /* semantische tags anpassen? zb h tags für mobile view*/

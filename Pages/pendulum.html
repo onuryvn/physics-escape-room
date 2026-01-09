@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Styles/style.css">
     <script defer src="../Scripts/pendulum.js"></script>
-    <title>Resonant Frequency</title>
+    <title>The Pendulum</title>
 </head>
 <body>
     <nav id="myNav" class="overlay">
         <div class="overlay-content">
             <a href="../index.html">Home</a>
-            <a href="./history.html">Physics History</a>
-            <a href="./gravity.html">Newton's Apple</a>
+            <a href="./history.html">History</a>
+            <a href="./gravity.html">Gravity</a>
             <a href="./quiz.html">Quiz</a>
         </div>
     </nav>
-
-    <button onclick="topFunction()" id="myBtn" title="Go to top">&#11165;</button>
 
     <div class="grid-container">
 
@@ -29,7 +27,7 @@
 
             <div class="headline" id="keyboard-page-headline">
                 <div>
-                    <div class="headline-highlight">Resonant Frequency</div>
+                    <div class="headline-highlight">The Pendulum</div>
                 </div>
             </div>
 
@@ -43,7 +41,68 @@
             <button class="burger-button" type="button">&#9776;</button>
         </div>
 
-        <section class="grid-item-main" id="resonance-page-main">
+        <section class="grid-item-main" id="pendulum-page-main">
+
+            <div class="pendulum-text" id="pendulum-text-1">
+                <h2 class="pendulum-text-title" id="pendulum-text-title-1">The Simple Pendulum</h2>
+                <p class="pendulum-text-desc" id="pendulum-text-desc-1">
+                    A pendulum is one of the simplest and most fascinating systems in physics. 
+                    It consists of a small mass (called the bob) attached to a string or rod that is fixed at one end. 
+                    When the pendulum is displaced from its resting position and released, it swings back and forth in a regular motion known as oscillation.
+                    Although it is very simple, it is surprisingly engaging to watch and experiment with.
+                </p>
+            </div>
+
+            <div class="pendulum-text" id="pendulum-text-2">
+                <h2 class="pendulum-text-title" id="pendulum-text-title-2">How Does a Pendulum Move?</h2>
+                <p class="pendulum-text-desc" id="pendulum-text-desc-2">
+                    The motion of a pendulum is caused by gravity. 
+                    When the bob is pulled to one side, gravitational force accelerates it toward the lowest point of its path. 
+                    As it passes this point, it continues moving due to its inertia, slowing down until gravity pulls it back again. 
+                    This repeating motion continues until energy is lost due to air resistance and friction.
+                </p>
+            </div>
+
+            <div class="pendulum-text" id="pendulum-text-3">
+                <h2 class="pendulum-text-title" id="pendulum-text-title-3">Why Are Pendulums Important?</h2>
+                <p class="pendulum-text-desc" id="pendulum-text-desc-3">
+                    Pendulums have played a key role in the history of science. 
+                    They were used in early clocks, helped scientists understand oscillatory motion, and are still used today in seismology, engineering, and physics education.
+                    Use the interactive pendulum demo on this page to explore how changing the length or starting angle affects the motion of the pendulum.
+                </p>
+            </div>
+
+            <div id="pendulum-wrapper">
+                <div id="pendulum-test">
+                    <div id="pendulum-container">
+                        <svg id="pendulum-svg" viewBox="0 0 200 200">
+                            <!-- <rect class="pivot" x="100" y="20" width="20" height="10" rx="2"/> -->
+                            <circle class="pivot" cx="100" cy="25" r="3"/>
+                            
+                            <line id="rod" class="pendulum-rod" x1="100" y1="25" x2="100" y2="165"/>
+
+                            <circle id="weight" class="pendulum-weight" cx="100" cy="165" r="10"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="pendulum-controls">
+                    <div class="pendulum-control-group">
+                        <label class="pendulum-control-label" for="length">Pendulum length</label>
+                        <input type="range" id="length" min="50" max="90" value="50" step="5">
+                        <div class="value-display" id="length-display">50 cm</div>
+                    </div>
+
+                    <div class="pendulum-control-group">
+                        <label class="pendulum-control-label" for="angle">Starting angle</label>
+                        <input type="range" id="angle" min="10" max="60" value="30" step="5">
+                        <div class="value-display" id="angle-display">30°</div>
+                    </div>
+
+                    <button class="pendulum-control-button" id="startBtn">▶ Start</button>
+                    <button class="pendulum-control-button" id="resetBtn">↺ Reset</button>
+                </div>
+            </div>
 
         </section>
 
