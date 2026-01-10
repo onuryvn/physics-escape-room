@@ -1,94 +1,49 @@
 const questions = [
   {
-    question: "Who is the frontman of Metallica?",
+    question: "How strong is Earth's gravitational pull?",
     answers: [
-      { text: "James Hetfield", correct: true },
-      { text: "Taylor Swift", correct: false },
-      { text: "Ronald Reagan", correct: false },
-      { text: "Ozzy Osbourne", correct: false },
+      { text: "9,81 m/s²", correct: true },
+      { text: "10,81 m/s²", correct: false },
+      { text: "8,81 m/s²", correct: false },
+      { text: "7,81 m/s²", correct: false },
     ]
   },
   {
-    question: "Which instrument is least likely to be found in a typical metal band?",
+    question: "When was the electron discovered?",
     answers: [
-      { text: "Electric bass", correct: false },
-      { text: "Electric guitar", correct: false },
-      { text: "Drums", correct: false },
-      { text: "Harp", correct: true },
+      { text: "1687", correct: false },
+      { text: "1925", correct: false },
+      { text: "2012", correct: false },
+      { text: "1897", correct: true },
     ]
   },
   {
-    question: "How many strings does a typical electric bass have?",
+    question: "Which scientist is known for the theory of relativity?",
     answers: [
-      { text: "12", correct: false },
-      { text: "2", correct: false },
-      { text: "4", correct: true },
-      { text: "π", correct: false },
+      { text: "Napoleon Bonaparte", correct: false },
+      { text: "Patrick Star", correct: false },
+      { text: "Albert Einstein", correct: true },
+      { text: "John Cena", correct: false },
     ]
   },
   {
-    question: "Which subgenre does not belong to metal?",
+    question: "Why does a pendulum eventually stop swinging?",
     answers: [
-      { text: "Thrash Metal", correct: false },
-      { text: "Glam Rock", correct: true },
-      { text: "Technical Death Metal", correct: false },
-      { text: "Black Metal", correct: false },
+      { text: "Because gravity disappears", correct: false },
+      { text: "Because energy is lost to air resistance and friction", correct: true },
+      { text: "Because the mass becomes smaller", correct: false },
+      { text: "Because the string gets shorter", correct: false },
     ]
   },
   {
-    question: "Who is the lead singer of Lamb of God?",
+    question: "What is physics?",
     answers: [
-      { text: "Randy Blythe", correct: true },
-      { text: "Mr. Krabs", correct: false },
-      { text: "Chris Adler", correct: false },
-      { text: "Dave Mustaine", correct: false },
+      { text: "A science that explains how nature works", correct: true },
+      { text: "A sport played with a ball", correct: false },
+      { text: "A type of music", correct: false },
+      { text: "A kind of food", correct: false },
     ]
   },
-  {
-    question: "Which of these metal bands comes from Germany?",
-    answers: [
-      { text: "Necrophagist", correct: true },
-      { text: "Megadeth", correct: false },
-      { text: "Motörhead", correct: false },
-      { text: "Judas Priest", correct: false },
-    ]
-  },
-  {
-    question: "What genre does Slayer belong to?",
-    answers: [
-      { text: "Thrash Metal", correct: true },
-      { text: "Glam Metal", correct: false },
-      { text: "Doom Metal", correct: false },
-      { text: "Nu Metal", correct: false },
-    ]
-  },
-  {
-    question: "Which part of an electric guitar reads the string vibrations and converts them into audio signals?",
-    answers: [
-      { text: "Pickup", correct: true },
-      { text: "Neck", correct: false },
-      { text: "Fretboard", correct: false },
-      { text: "Tuning pegs", correct: false },
-    ]
-  },
-  {
-    question: "How many notes are there in one octave?",
-    answers: [
-      { text: "666", correct: false },
-      { text: "12", correct: true },
-      { text: "24", correct: false },
-      { text: "10", correct: false },
-    ]
-  },
-  {
-    question: "What allows an electric guitar to be louder than an acoustic guitar?",
-    answers: [
-      { text: "Metronome", correct: false },
-      { text: "Metal strings", correct: false },
-      { text: "Amplifier", correct: true },
-      { text: "Number of strings", correct: false },
-    ]
-  }
 ];
 
 const questionElement = document.getElementById("question");
@@ -124,7 +79,7 @@ function showQuestion(){
 }
 
 function resetState(){
-    nextButton.style.display = "none";
+    nextButton.style.visibility = "hidden";
     while(answerButtons.firstChild){
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -145,14 +100,14 @@ function selectAnswer(e){
         }
         button.disabled = true;
     });
-    nextButton.style.display = "block";
+    nextButton.style.visibility = "visible";
 }
 
 function showScore(){
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "block";
+    nextButton.style.visibility = "visible";
 }
 
 function handleNextButton(){
