@@ -640,18 +640,98 @@
 
 /* GRAVITY PAGE */
 
-#gravity-page-main {
-	grid-area: 2/1/3/4;
-	display: grid;
-	grid-template-columns: 1fr 15fr 1fr;
-	row-gap: 10rem;
-	/* background-image: url(../Images/Gray_Matte.jpg);	 */
-	/* background-color: #00000084; */
-	background-position: center;
-	background-size: cover;
-	background-attachment: fixed;
+
+#gravity-page-main{  
+    background-color: rgb(130, 130, 130); 
+	box-shadow: inset 0 0 12px 4px black; /* zsmfassen */
+    display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto auto auto auto ;
+    padding: 16px;
+	gap: 48px;
+}
+
+#gravity-text-1{
+	grid-row: 2 / 3;
+}
+
+#picture-Newton{
+	grid-row: 1 / 2;
+}
+
+#gravity-formula-1{
+	grid-row: 3 / 4;
+}
+
+#apple-tree1{
+	grid-row: 5 / 6;
+}
+
+.tree-wrapper{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: min(80vw, 640px);
+	margin: 0 auto;
+	--ground: 80%;
+}
+
+.tree{
+	width: 80%;
+	height: auto;
+	filter: brightness(0.8) contrast(1.1);
+}
+
+.apple{
+	position: absolute;
+	width: 14vw;
+	max-width: 100px;
+	min-width: 40px;
+	top: 16%;
+	left: 56%;
+	cursor: pointer;
+	filter: brightness(0.8) contrast(1.1);
+}
+
+#gravity-page-main h1,p{
+    font-family: "Oranienbaum", system-ui;
+    text-shadow: 0 0 1rem black;
 	color: whitesmoke;
 }
+
+.tree-wrapper .apple.fall{
+    animation: appleDrop 1.1s ease-in forwards;
+}
+
+@keyframes appleDrop{
+    to { top: var(--ground); }
+}
+
+@media screen and (min-width: 800px){
+	#gravity-page-main{
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto auto auto;
+		font-size: 1.5rem;
+	}
+	#gravity-text-1{
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+	}
+	#picture-Newton{
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+	#gravity-formula-1{
+		grid-column: 1 / 3;
+		grid-row: 2 / 3;
+	}
+	#apple-tree1{
+		grid-column: 1 / 3;
+		grid-row: 3 / 4;
+	}
+}
+
+
 
 /* /GRAVITY PAGE */
 
