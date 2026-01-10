@@ -33,3 +33,23 @@ function slideUpNav() {
   document.getElementById("nav-mobile").style.height = "0%";
 }
 // /curtain menu
+
+// apple fall animation
+const gravityValue = document.getElementById("gravity-value")
+const apple = document.getElementById("apple");
+
+let hasFallen = false;
+
+if (apple) {
+  apple.addEventListener("click", () => {
+    if (!hasFallen) {
+      apple.classList.add("fall");
+      hasFallen = true;
+    if (gravityValue){
+      gravityValue.textContent = "9.81";
+      gravityValue.style.fontWeight = "bold";
+    }
+    }
+  });
+}
+// /apple fall animation
