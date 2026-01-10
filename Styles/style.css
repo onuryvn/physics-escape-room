@@ -139,7 +139,7 @@
 /* slideshow */
 
 .gallery-item {
-  /* display: none; */
+  position: relative;
   height: 100%;
   width: 100%;
   animation-name: fade;
@@ -151,23 +151,20 @@
 	to {opacity: 1}
 }
 
-.gallery-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.gallery-item-img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   background-color: rgb(150, 150, 150);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   box-shadow: inset 0 0 24px 8px #000000;
 }
 
-.gallery-page > a {
-  margin: 0;
-  padding: 0;
+.gallery-page-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   text-decoration: none;
   color: white;
   font-size: 3rem;
@@ -203,20 +200,12 @@
 }
 /* /hover animations */
 
-.page-link:hover {
+.gallery-page-link:hover {
   text-decoration-line: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 7px;
-  /* transform: scale(1.01); */ /* When hovering over the page-links, around the prev and next buttons a subtle quadratic area appears */ 
 }
 
-#gallery-history-page {background-image: url(../Images/astronomy-5829414.svg);}
-
-#gallery-gravity-page {background-image: url(../Images/1546636880.svg);}
-
-#gallery-pendulum-page {background-image: url(../Images/horizontal_pendulum_2.svg);}
-
-#gallery-quiz-page {background-image: url(../Images/mathematics-7304235.svg);}
 /* /slideshow */
 
 /* curtain-menu */
@@ -296,7 +285,7 @@
 /* /curtain-menu */
 
 @media screen and (min-width: 550px) {
-  .gallery-page a {font-size: 4rem;}
+  .gallery-page-link {font-size: 4rem;}
 }
 
 @media screen and (min-width: 1000px) {
@@ -383,7 +372,7 @@
 	grid-template-columns: 1fr 11fr;
 	grid-template-rows: repeat(9, 1fr 0.5fr 1fr);
 	background-color: rgb(70, 70, 70); /* zsmfassen */
-  	background-image: url(../Images/astronomy-5829414_1920.png);
+  	background-image: url(../Images/sun-earth-moon-geometry.png);
 	background-size: cover; /* zsmfasse */
 	background-blend-mode: color-burn; /* zsmfassen */
 	box-shadow: inset 0 0 12px 4px black; /* zsmfassen */
@@ -743,7 +732,7 @@
 	grid-template-columns: 1fr;
 	gap: 48px;
 	background-color: rgb(70, 70, 70); /* zsmfassen */	
-	background-image: url(../Images/horizontal_pendulum_2.svg);
+	background-image: url(../Images/pendulum-mechanical-clock-physics.svg);
 	background-blend-mode: color-burn;
 	background-position: center;
   	background-size: cover;
@@ -944,7 +933,7 @@ input[type="range"] {
 
 #quiz-page-main{
 	background-color: rgb(100, 100, 100);
-	background-image: url(../Images/mathematics-7304235.svg);
+	background-image: url(../Images/math-formulas-sketch-handwritten.svg);
 	background-blend-mode: color-burn;
 	background-position: center;
 	background-size: cover;
