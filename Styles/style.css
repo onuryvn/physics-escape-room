@@ -672,7 +672,17 @@
 }
 
 .cross-page-ref {
-	color: white;
+	text-decoration: none;
+	background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 128, 0));
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.cross-page-ref:hover {
+	text-decoration: underline;
+	background: white;
+	background-clip: text;
+	-webkit-text-fill-color: white;
 }
 
 .pendulum-text,
@@ -744,6 +754,11 @@ input[type="range"] {
     background: white;
 }
 
+#pendulum-svg {
+	background-color: rgb(100, 100, 100);
+	border-radius: 50%;
+}
+
 .pendulum-rod {
     stroke: white;
     stroke-width: 2;
@@ -805,7 +820,7 @@ input[type="range"] {
 	.pendulum-text {display: contents;}
 
 	.pendulum-text-title,
-	.pendulum-text-desc,
+	.pendulum-text-desc-ctn,
 	#pendulum-wrapper,
 	#pendulum-container {
 		display: flex;
@@ -814,13 +829,13 @@ input[type="range"] {
 	}
 
 	#pendulum-text-title-1 {grid-area: 1/1/2/2;}
-	#pendulum-text-desc-1 {grid-area: 1/2/2/4;}
+	#pendulum-text-desc-1-ctn {grid-area: 1/2/2/4;}
 
 	#pendulum-text-title-2 {grid-area: 2/1/3/2;}
-	#pendulum-text-desc-2 {grid-area: 2/2/3/4;}
+	#pendulum-text-desc-2-ctn {grid-area: 2/2/3/4;}
 
 	#pendulum-text-title-3 {grid-area: 4/1/5/2;}
-	#pendulum-text-desc-3 {grid-area: 4/2/5/4;}
+	#pendulum-text-desc-3-ctn {grid-area: 4/2/5/4;}
 
 	#pendulum-wrapper {
 		grid-area: 3/1/4/4;
