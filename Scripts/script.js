@@ -1,57 +1,4 @@
-document.getElementById("prev").addEventListener("click", () => {
-    plusSlides(-1)
-});
-document.getElementById("next").addEventListener("click", () => {
-    plusSlides(1)
-});
-
-document.getElementById('slide1').addEventListener("click", () => {
-  currentSlide(1);
-})
-
-document.getElementById('slide2').addEventListener("click", () => {
-  currentSlide(2);
-})
-
-document.getElementById('slide3').addEventListener("click", () => {
-  currentSlide(3);
-})
-
-document.getElementById('slide4').addEventListener("click", () => {
-  currentSlide(4);
-})
-
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Dot image controls
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("gallery-item");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-
 // curtain menu
-
 let burger_button = document.querySelector('.burger-button');
 
 let toggle = false;
@@ -86,3 +33,27 @@ function slideUpNav() {
   document.getElementById("nav-mobile").style.height = "0%";
 }
 // /curtain menu
+
+// gallery slideshow
+let currentSlide = 0;
+
+showNextSlide();
+
+function showNextSlide() {
+    let allSlides = document.getElementsByClassName("gallery-item");
+    
+    for (let slideNumber = 0; slideNumber < allSlides.length; slideNumber = slideNumber + 1) {
+        allSlides[slideNumber].style.display = "none";
+    }
+    
+    currentSlide = currentSlide + 1;
+    
+    if (currentSlide > allSlides.length) {
+        currentSlide = 1;
+    }
+    
+    allSlides[currentSlide - 1].style.display = "block";
+    
+    setTimeout(showNextSlide, 3000);
+}
+// /gallery slideshow
