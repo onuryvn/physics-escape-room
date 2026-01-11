@@ -1,4 +1,3 @@
-// curtain menu
 let burger_button = document.querySelector('.burger-button');
 
 let toggle = false;
@@ -32,4 +31,3 @@ function slideDownNav() {
 function slideUpNav() {
   document.getElementById("nav-mobile").style.height = "0%";
 }
-// /curtain menu

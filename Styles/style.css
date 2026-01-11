@@ -47,8 +47,7 @@ p {
 a {text-decoration: none;}
 
 label,
-output,
-button:not(.burger-button) {
+output {
 	font-family: 'Inter', sans-serif;
 	font-size: 1rem;
 	font-weight: 600;
