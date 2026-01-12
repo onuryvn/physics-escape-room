@@ -36,10 +36,10 @@ const questions = [
   }
 ];
 
-const questionElement = document.getElementById("question");
+const questionElement = document.getElementById("quiz-question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const nextBtn = document.getElementById("next-btn");
-const buttons = answerButtonsElement.querySelectorAll(".btn");
+const buttons = answerButtonsElement.querySelectorAll(".answer-btn");
 
 let index = 0;
 let score = 0;
@@ -64,13 +64,13 @@ function showQuestion() {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].textContent = questions[index].a[i];
     buttons[i].disabled = false;
-    buttons[i].className = "btn";
+    buttons[i].className = "answer-btn";
   }
 }
 
 answerButtonsElement.addEventListener("click", (e) => {
   const btn = e.target;
-  if (!btn.classList.contains("btn") || btn.disabled) return;
+  if (!btn.classList.contains("answer-btn") || btn.disabled) return;
 
   const correctIndex = questions[index].correct;
   const clickedIndex = Array.from(buttons).indexOf(btn);
