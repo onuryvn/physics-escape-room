@@ -1,131 +1,101 @@
 const questions = [
   {
-    question: "How strong is Earth's gravitational pull?",
-    answers: [
-      { text: "9,81 m/s²", correct: true },
-      { text: "10,81 m/s²", correct: false },
-      { text: "8,81 m/s²", correct: false },
-      { text: "7,81 m/s²", correct: false },
-    ]
+    q: "How strong is Earth's gravitational pull?",
+    a: ["9,81 m/s²", "10,81 m/s²", "8,81 m/s²", "7,81 m/s²"],
+    correct: 0
   },
   {
-    question: "When was the electron discovered?",
-    answers: [
-      { text: "1687", correct: false },
-      { text: "1925", correct: false },
-      { text: "2012", correct: false },
-      { text: "1897", correct: true },
-    ]
+    q: "When was the electron discovered?",
+    a: ["1687", "1925", "2012", "1897"],
+    correct: 3
   },
   {
-    question: "Which scientist is known for the theory of relativity?",
-    answers: [
-      { text: "Napoleon Bonaparte", correct: false },
-      { text: "Patrick Star", correct: false },
-      { text: "Albert Einstein", correct: true },
-      { text: "John Cena", correct: false },
-    ]
+    q: "Which scientist is known for the theory of relativity?",
+    a: ["Napoleon Bonaparte", "Patrick Star", "Albert Einstein", "John Cena"],
+    correct: 2
   },
   {
-    question: "Why does a pendulum eventually stop swinging?",
-    answers: [
-      { text: "Because gravity disappears", correct: false },
-      { text: "Because energy is lost to air resistance and friction", correct: true },
-      { text: "Because the mass becomes smaller", correct: false },
-      { text: "Because the string gets shorter", correct: false },
-    ]
+    q: "Why does a pendulum eventually stop swinging?",
+    a: [
+      "Because gravity disappears",
+      "Because energy is lost to air resistance and friction",
+      "Because the mass becomes smaller",
+      "Because the string gets shorter"
+    ],
+    correct: 1
   },
   {
-    question: "What is physics?",
-    answers: [
-      { text: "A science that explains how nature works", correct: true },
-      { text: "A sport played with a ball", correct: false },
-      { text: "A type of music", correct: false },
-      { text: "A kind of food", correct: false },
-    ]
-  },
+    q: "What is physics?",
+    a: [
+      "A science that explains how nature works",
+      "A sport played with a ball",
+      "A type of music",
+      "A kind of food"
+    ],
+    correct: 0
+  }
 ];
 
 const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
+const answerButtonsElement = document.getElementById("answer-buttons");
+const nextBtn = document.getElementById("next-btn");
+const buttons = answerButtonsElement.querySelectorAll(".btn");
 
-let currentQuestionIndex = 0;
+let index = 0;
 let score = 0;
 
-function startQuiz(){
-    currentQuestionIndex = 0;
-    score = 0;
-    nextButton.innerHTML = "Next";
-    showQuestion();
+function showQuestion() {
+  if (index === questions.length) {
+    questionElement.style.display = "block";
+    questionElement.textContent = `You scored: ${score} out of ${questions.length}`;
+    answerButtonsElement.style.display = "none";
+    nextBtn.textContent = "Try again";
+    nextBtn.style.visibility = "visible";
+    return;
+  }
+
+  questionElement.style.display = "block";
+  answerButtonsElement.style.display = "flex";
+  nextBtn.textContent = "Next";
+  nextBtn.style.visibility = "hidden";
+
+  questionElement.textContent = (index + 1) + ". " + questions[index].q;
+
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].textContent = questions[index].a[i];
+    buttons[i].disabled = false;
+    buttons[i].className = "btn";
+  }
 }
 
-function showQuestion(){
-    resetState();
-    let currentQuestion = questions[currentQuestionIndex];
-    let questionNo = currentQuestionIndex + 1;
-    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+answerButtonsElement.addEventListener("click", (e) => {
+  const btn = e.target;
+  if (!btn.classList.contains("btn") || btn.disabled) return;
 
-    currentQuestion.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("btn");
-        answerButtons.appendChild(button);
-        if(answer.correct){
-            button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", selectAnswer);
-    });
-}
+  const correctIndex = questions[index].correct;
+  const clickedIndex = Array.from(buttons).indexOf(btn);
 
-function resetState(){
-    nextButton.style.visibility = "hidden";
-    while(answerButtons.firstChild){
-        answerButtons.removeChild(answerButtons.firstChild);
-    }
-}
+  if (clickedIndex === correctIndex) {
+    score++;
+  }
 
-function selectAnswer(e){
-    const selectedBtn = e.target;
-    const isCorrect = selectedBtn.dataset.correct === "true";
-    if(isCorrect){
-        selectedBtn.classList.add("correct");
-        score++;
-    }else{
-        selectedBtn.classList.add("incorrect");
-    }
-    Array.from(answerButtons.children).forEach(button => {
-        if(button.dataset.correct === "true"){
-            button.classList.add("correct");
-        }
-        button.disabled = true;
-    });
-    nextButton.style.visibility = "visible";
-}
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
+    buttons[i].classList.add(i === correctIndex ? "correct" : "incorrect");
+  }
 
-function showScore(){
-    resetState();
-    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.visibility = "visible";
-}
-
-function handleNextButton(){
-    currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length){
-        showQuestion();
-    }else{
-        showScore();
-    }
-}
-
-
-nextButton.addEventListener("click", ()=>{
-    if(currentQuestionIndex < questions.length){
-        handleNextButton();
-    }else{
-        startQuiz();
-    }
+  nextBtn.style.visibility = "visible";
 });
 
-startQuiz();
+nextBtn.addEventListener("click", () => {
+  if (index === questions.length) {
+    // Restart quiz
+    index = 0;
+    score = 0;
+  } else {
+    index++;
+  }
+  showQuestion();
+});
+
+showQuestion();

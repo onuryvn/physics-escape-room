@@ -777,7 +777,7 @@ input[type="range"] {
 	background: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
 	border: 1px solid rgb(0, 0, 0);
-	padding: 1rem;
+	padding: 12px;
 	text-align: left;
 	border-radius: 5px;
 	cursor: pointer;
@@ -794,15 +794,17 @@ input[type="range"] {
 }
 
 #next-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background: rgb(195, 195, 195);
 	color: rgb(65, 75, 85);
 	width: 150px;
 	height: 40px;
-	border: 1px solid rgb(0, 0, 0);
-	padding: 10px;
+	border: none;
+	padding: 12px;
 	border-radius: 4px;
 	cursor: pointer;
-	visibility: hidden;
 	transition: background 0.3s;
 }
 
@@ -812,7 +814,7 @@ input[type="range"] {
 
 .incorrect{background: rgb(240, 130, 130);}
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 650px) {
 
 	.quiz {
 		width: 100%;
@@ -831,6 +833,7 @@ input[type="range"] {
 	}
 
 	.btn {
+		padding: 16px;
 		width: 40%;
 		text-align: center;
 	}
