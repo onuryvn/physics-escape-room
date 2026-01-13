@@ -18,7 +18,7 @@ const questions = [
     q: "Why does a pendulum eventually stop swinging?",
     a: [
       "Because gravity disappears",
-      "Because energy is lost to air resistance and friction",
+      "Because energy is lost to air resistance",
       "Because the mass becomes smaller",
       "Because the string gets shorter"
     ],
@@ -45,7 +45,7 @@ let index = 0;
 let score = 0;
 
 function showQuestion() {
-  if (index === questions.length) {
+  if (index == questions.length) {
     questionElement.style.display = "block";
     questionElement.textContent = `You scored: ${score} out of ${questions.length}`;
     answerButtonsElement.style.display = "none";

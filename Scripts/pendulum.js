@@ -7,7 +7,6 @@ const resetBtn = document.getElementById('resetBtn');
 const rod = document.getElementById('rod');
 const weight = document.getElementById('weight');
 
-// Pendel-Parameter
 const pivotX = 100;
 const pivotY = 20;
 let length = 50;
@@ -16,9 +15,9 @@ let currentAngle = 30;
 let angularVelocity = 0;
 let isRunning = false;
 
-// Gravity constant (vereinfacht für Animation)
+// Gravity constant (simplified for animation)
 const gravity = 0.5;
-const damping = 0.995; // Dämpfung
+const damping = 0.995;
 
 // Slider Updates
 lengthSlider.addEventListener('input', (e) => {
@@ -39,7 +38,6 @@ angleSlider.addEventListener('input', (e) => {
     }
 });
 
-// Start Button
 startBtn.addEventListener('click', () => {
     if (!isRunning) {
         isRunning = true;
@@ -51,7 +49,6 @@ startBtn.addEventListener('click', () => {
     }
 });
 
-// Reset Button
 resetBtn.addEventListener('click', () => {
     isRunning = false;
     startBtn.textContent = '▶ Start';
@@ -61,7 +58,7 @@ resetBtn.addEventListener('click', () => {
     updatePendulum();
 });
 
-// Pendel Position berechnen und zeichnen
+// Calculating pendulum position and drawing
 function updatePendulum() {
     const angleRad = (currentAngle * Math.PI) / 180;
     const x = pivotX + length * Math.sin(angleRad);
@@ -76,7 +73,7 @@ function updatePendulum() {
 function animate() {
     if (!isRunning) return;
 
-    // Pendelgleichung: angular acceleration = -(g/L) * sin(angle)
+    // Pendulum-formula: angular acceleration = -(g/L) * sin(angle)
     const angleRad = (currentAngle * Math.PI) / 180;
     const angularAcceleration = (-gravity / length) * Math.sin(angleRad) * 100;
 

@@ -1,27 +1,27 @@
-let burger_button = document.querySelector('.burger-button');
+let burgerButton = document.querySelector('.burger-button');
 
 let toggle = false;
 
 function changeButton() {
   slideDownNav();
-  burger_button.innerHTML = '&times;';
-  burger_button.style.fontSize = '36px';
+  burgerButton.innerHTML = '&times;';
+  burgerButton.style.fontSize = '36px';
 }
 
 function resetButton() {
   slideUpNav();
-  burger_button.innerHTML = '&#9776;';
-  burger_button.style.fontSize = '24px';
+  burgerButton.innerHTML = '&#9776;';
+  burgerButton.style.fontSize = '24px';
 }
 
-burger_button.addEventListener("click", () => {
+burgerButton.addEventListener("click", () => {
   if(toggle) {
     resetButton();
   } 
   else {
     changeButton();
   }
-  toggle = !toggle; // change value
+  toggle = !toggle;
 });
 
 function slideDownNav() {
