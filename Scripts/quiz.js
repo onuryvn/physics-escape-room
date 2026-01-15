@@ -39,63 +39,83 @@ const questions = [
 const questionElement = document.getElementById("quiz-question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const nextBtn = document.getElementById("next-btn");
-const buttons = answerButtonsElement.querySelectorAll(".answer-btn");
+const answerButtons = answerButtonsElement.querySelectorAll(".answer-btn");
 
-let index = 0;
-let score = 0;
+let currentQuestionIndex = 0;
+let playerScore = 0;
 
-function showQuestion() {
-  if (index == questions.length) {
-    questionElement.style.display = "block";
-    questionElement.textContent = `You scored: ${score} out of ${questions.length}`;
-    answerButtonsElement.style.display = "none";
-    nextBtn.textContent = "Try again";
-    nextBtn.style.visibility = "visible";
+function displayCurrentQuestion() {
+  if (currentQuestionIndex === questions.length) {
+    showFinalScore();
     return;
   }
 
-  questionElement.style.display = "block";
-  answerButtonsElement.style.display = "flex";
-  nextBtn.textContent = "Next";
-  nextBtn.style.visibility = "hidden";
-
-  questionElement.textContent = (index + 1) + ". " + questions[index].q;
-
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].textContent = questions[index].a[i];
-    buttons[i].disabled = false;
-    buttons[i].className = "answer-btn";
-  }
+  showNextQuestion();
 }
 
-answerButtonsElement.addEventListener("click", (e) => {
-  const btn = e.target;
-  if (!btn.classList.contains("answer-btn") || btn.disabled) return;
+function showFinalScore() {
+  questionElement.style.display = "block";
+  questionElement.textContent = `You scored: ${playerScore} out of ${questions.length}`;
+  
+  answerButtonsElement.style.display = "none";
+  
+  nextBtn.textContent = "Try again";
+  nextBtn.style.visibility = "visible";
+}
 
-  const correctIndex = questions[index].correct;
-  const clickedIndex = Array.from(buttons).indexOf(btn);
-
-  if (clickedIndex === correctIndex) {
-    score++;
+function showNextQuestion() {
+  const currentQuestion = questions[currentQuestionIndex];
+  
+  questionElement.style.display = "block";
+  questionElement.textContent = `${currentQuestionIndex + 1}. ${currentQuestion.q}`;
+  
+  answerButtonsElement.style.display = "flex";
+  
+  for (let i = 0; i < answerButtons.length; i++) {
+    answerButtons[i].textContent = currentQuestion.a[i];
+    answerButtons[i].disabled = false;
+    answerButtons[i].className = "answer-btn";
   }
+  
+  nextBtn.textContent = "Next";
+  nextBtn.style.visibility = "hidden";
+}
 
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].disabled = true;
-    buttons[i].classList.add(i === correctIndex ? "correct" : "incorrect");
+answerButtonsElement.addEventListener("click", (event) => {
+  const clickedButton = event.target;
+  
+  if (!clickedButton.classList.contains("answer-btn")) return;
+  if (clickedButton.disabled) return;
+  
+  const clickedAnswerIndex = Array.from(answerButtons).indexOf(clickedButton);
+  const correctAnswerIndex = questions[currentQuestionIndex].correct;
+  
+  if (clickedAnswerIndex === correctAnswerIndex) {
+    playerScore++;
   }
-
+  
+  for (let i = 0; i < answerButtons.length; i++) {
+    answerButtons[i].disabled = true;
+    
+    if (i === correctAnswerIndex) {
+      answerButtons[i].classList.add("correct");
+    } else {
+      answerButtons[i].classList.add("incorrect");
+    }
+  }
+  
   nextBtn.style.visibility = "visible";
 });
 
 nextBtn.addEventListener("click", () => {
-  if (index === questions.length) {
-    // Restart quiz
-    index = 0;
-    score = 0;
+  if (currentQuestionIndex === questions.length) {
+    currentQuestionIndex = 0;
+    playerScore = 0;
   } else {
-    index++;
+    currentQuestionIndex++;
   }
-  showQuestion();
+  
+  displayCurrentQuestion();
 });
 
-showQuestion();
+displayCurrentQuestion();
