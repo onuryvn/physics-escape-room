@@ -1,0 +1,66 @@
+# robots.txt - PhysiXplore
+
+# NOTE: For demonstration purposes (and to follow Professor Schwarzer's instructions)
+# we've decided to place robots.txt and sitemap.xml in a subfolder.
+# In a live deployment, robots.txt and sitemap.xml must be in the root directory to work properly.
+
+# ============================================
+# BLOCK AI CRAWLERS
+# ============================================
+
+# OpenAI GPT
+User-agent: GPTBot
+Disallow: /
+
+# Common Crawl (AI Training)
+User-agent: CCBot
+Disallow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Disallow: /
+
+# Google Extended (AI Training)
+User-agent: Google-Extended
+Disallow: /
+
+# ============================================
+# BLOCK SEO TOOLS
+# ============================================
+
+# Semrush
+User-agent: SemrushBot
+Disallow: /
+
+# Ahrefs
+User-agent: AhrefsBot
+Disallow: /
+
+# Majestic
+User-agent: MJ12bot
+Disallow: /
+
+# ============================================
+# ALL OTHER BOTS
+# ============================================
+
+User-agent: *
+Crawl-delay: 5
+
+# Allow pages
+Allow: /Pages/
+Allow: /index.html
+
+# Block scripts and styles
+Disallow: /Scripts/
+Disallow: /Styles/
+
+# Allow images and favicons
+Allow: /Images/
+Allow: /Images/Favicons
+
+# ============================================
+# SITEMAP
+# ============================================
+
+Sitemap: https://example.com/sitemap.xml
