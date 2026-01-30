@@ -1,6 +1,6 @@
 # robots.txt - PhysiXplore
 
-# NOTE: For demonstration purposes (and to follow Professor Schwarzer's instructions)
+# NOTE: For demonstration purposes
 # we've decided to place robots.txt and sitemap.xml in a subfolder.
 # In a live deployment, robots.txt and sitemap.xml must be in the root directory to work properly.
 
