@@ -8,10 +8,10 @@ if (apple) {
     if (!hasFallen) {
       apple.classList.add("fall");
       hasFallen = true;
-    if (gravityValue){
-      gravityValue.textContent = "9.81";
-      gravityValue.style.fontWeight = "bold";
-    }
+      if (gravityValue){
+        gravityValue.textContent = "9.81";
+        gravityValue.style.fontWeight = "bold";
+      }
     }
   });
 }

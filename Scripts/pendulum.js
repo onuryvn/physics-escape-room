@@ -8,7 +8,7 @@ const rod = document.getElementById('rod');
 const weight = document.getElementById('weight');
 
 const pivotX = 100;
-const pivotY = 20;
+const pivotY = 25;
 let length = 50;
 let startAngle = 30;
 let currentAngle = 30;
@@ -54,7 +54,6 @@ resetBtn.addEventListener('click', () => {
     startBtn.textContent = '▶ Start';
     currentAngle = startAngle;
     angularVelocity = 0;
-    time = 0;
     updatePendulum();
 });
 
